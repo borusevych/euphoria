@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ModalAddToCard from "../components/Modal/ModalAddToCart";
+import {Link} from 'react-router-dom';
 
 export default function Favorites(props) {
     const [modalItem, setModalItem] = useState(null);
@@ -26,9 +27,11 @@ export default function Favorites(props) {
 
                     return (
                         <li key={item.sku} style={{ margin: '10px' }}>
-                            <img src={item.imageUrl} style={{ width: '400px' }} alt={item.name} />
-                            <h2>{item.name}</h2>
-                            <p>$ {item.price}</p>
+                            <Link to={`../user/${item.sku}`} name={item.name} style={{color: 'black'}}>
+                                <img src={item.imageUrl} style={{ width: '400px' }} alt={item.name} />
+                                <h2>{item.name}</h2>
+                                <p>$ {item.price}</p>
+                            </Link>
                             <div className="list__buttons">
                                 {
                                     isFavorite ?
